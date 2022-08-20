@@ -262,110 +262,117 @@ def country_queryset(request):
     Korea_South = models.IpAddress.objects.filter(country_code='KR')
     Korea_North = models.IpAddress.objects.filter(country_code='KP')
     Spain = models.IpAddress.objects.filter(country_code='ES')
+    Germany = models.IpAddress.objects.filter(country_code='DE')
 
-    if len(Brazil) >= 1:
+    if len(Brazil) >= 2:
         count = len(Brazil)
         country = Brazil[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Spain) >= 1:
+    if len(Germany) >= 2:
+        count = len(Germany)
+        country = Germany[0].country
+        label_data.append(country)
+        country_data.append(count)
+
+    if len(Spain) >= 2:
         count = len(Spain)
         country = Spain[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Korea_South) >= 1:
+    if len(Korea_South) >= 2:
         count = len(Korea_South)
         country = Korea_South[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Korea_North) >= 1:
+    if len(Korea_North) >= 2:
         count = len(Korea_North)
         country = Korea_North[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Morocco) >= 1:
+    if len(Morocco) >= 2:
         count = len(Morocco)
         country = Morocco[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(canada) >= 1:
+    if len(canada) >= 2:
         count = len(canada)
         country = canada[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(parkistan) >= 1:
+    if len(parkistan) >= 2:
         count = len(parkistan)
         country = parkistan[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(us) >= 1:
+    if len(us) >= 2:
         count = len(us)
         country = us[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(cn) >= 1:
+    if len(cn) >= 2:
         count = len(cn)
         country = cn[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(jp) >= 1:
+    if len(jp) >= 2:
         count = len(jp)
         country = jp[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(idon) >= 1:
+    if len(idon) >= 2:
         count = len(idon)
         country = idon[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(uk) >= 1:
+    if len(uk) >= 2:
         count = len(uk)
         country = uk[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Myanmar) >= 1:
+    if len(Myanmar) >= 2:
         count = len(Myanmar)
         country = Myanmar[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Australia) >= 1:
+    if len(Australia) >= 2:
         count = len(Australia)
         country = Australia[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Austria) >= 1:
+    if len(Austria) >= 2:
         count = len(Austria)
         country = Austria[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Slovakia) >= 1:
+    if len(Slovakia) >= 2:
         count = len(Slovakia)
         country = Slovakia[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Slovenia) >= 1:
+    if len(Slovenia) >= 2:
         count = len(Slovenia)
         country = Slovenia[0].country
         label_data.append(country)
         country_data.append(count)
 
-    if len(Iran) >= 1:
+    if len(Iran) >= 2:
         count = len(Iran)
         country = Iran[0].country
         label_data.append(country)
@@ -395,6 +402,7 @@ def region_queryset(request):
     china_beijing = models.IpAddress.objects.filter(region_code='11')
     china_guangdong = models.IpAddress.objects.filter(region_code='44')
     china_shanghi = models.IpAddress.objects.filter(region_code='31')
+    china_Liaoning = models.IpAddress.objects.filter(region_code='21')
     jp_tokyo = models.IpAddress.objects.filter(region_code='13')
     au_vic = models.IpAddress.objects.filter(region_code='VIC')
     ca_on = models.IpAddress.objects.filter(region_code='ON')
@@ -407,10 +415,25 @@ def region_queryset(request):
     indo_jakata = models.IpAddress.objects.filter(
         region='Special Capital Region of Jakarta')
 
+    germany_he = models.IpAddress.objects.filter(region_code='HE')
+    brazil_sp = models.IpAddress.objects.filter(region_code='SP')
+
     if len(parkistan_punjab) >= 1:
         region_count = len(parkistan_punjab)
         label_region.append(parkistan_punjab[0].region)
         label_country.append(parkistan_punjab[0].country)
+        region_data.append(region_count)
+
+    if len(germany_he) >= 1:
+        region_count = len(germany_he)
+        label_region.append(germany_he[0].region)
+        label_country.append(germany_he[0].country)
+        region_data.append(region_count)
+
+    if len(brazil_sp) >= 1:
+        region_count = len(brazil_sp)
+        label_region.append(brazil_sp[0].region)
+        label_country.append(brazil_sp[0].country)
         region_data.append(region_count)
 
     if len(slovenia_ljb) >= 1:
@@ -483,6 +506,12 @@ def region_queryset(request):
         region_count = len(china_shanghi)
         label_region.append(china_shanghi[0].region)
         label_country.append(china_shanghi[0].country)
+        region_data.append(region_count)
+
+    if len(china_Liaoning) >= 1:
+        region_count = len(china_Liaoning)
+        label_region.append(china_Liaoning[0].region)
+        label_country.append(china_Liaoning[0].country)
         region_data.append(region_count)
 
     if len(us_OK) >= 1:
@@ -567,13 +596,11 @@ def pie_chart(request):
 
 
 def heap_map(request):
-
     data = region_queryset(request)
     region_data = data['region_data']
     label_region = data['label_region']
     label_country = data['label_country']
     print(label_region)
-
     return render(request, 'heap_map.html', {'label_region': label_region,
                                              'label_country': label_country
                                              })

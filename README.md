@@ -4,13 +4,20 @@
 2.  create virtual enviroment with the below commands if you want to separate enviromnent for this project.
 
     export WORKON_HOME=$HOME/virtenvs
-	export PROJECT_HOME=$HOME/Projects-Active
+
+    export PROJECT_HOME=$HOME/Projects-Active
+
     source $HOME/.local/bin/virtualenvwrapper.sh
+
     mkvirtualenv dux
 
     After creating virtual environment, you should be on 'dux' environment. If 'dux' environment is not active, you can use 'workon dux' command in you terminal. Now you can install dependencies with this command => pip install -r requirements.txt
 
-3.  Create database with postgres, it is called 'dux_location' because this database name already setup in settings.py inside the project folder. After creating database, you need to restore database with my "dux_location.sql" then you don't need to create records in database for analysis.
+    After installing dependencies, please install the below python dependency in your local PC.
+
+    sudo apt-get install gettext
+
+3.  Create database with postgres, it is called 'dux_location' because this database name already setup in settings.py inside the project folder. After creating database, you need to restore database with my "dux_db.sql" then you don't need to create records in database for analysis.
 
 Please do not use if you don't want to create data in database using "Search IP" button on Profile page.
 Another options for new database but you need to search for almost all IP address in your excel because this new database will not have data for analysis.

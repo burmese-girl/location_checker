@@ -9,9 +9,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('logout/', views.logout, name='logout'),
-    path('search/', views.search, name='search'),    
+    path('search/', views.search, name='search'),
     path('dashboard/', views.LocationListView.as_view(), name='dashboard'),
     path('pie_chart/', views.pie_chart, name='pie_chart'),
     path('heap_map/', views.heap_map, name='heap_map'),
-
 ]
