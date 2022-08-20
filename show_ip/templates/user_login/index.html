@@ -1,0 +1,44 @@
+
+{% load static%}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/main_menu.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width:480px)" href="{% static 'login/css/mobile.css' %}">
+    <title style="padding-left: 10px;">Location Checker</title>
+
+</head>
+<body class="logout-bg">
+<div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10" >
+    <!-- style="background-color: #9900cc;" -->
+<img class="img-login" src="/static/login/images/company.png"></img>
+<div class="company-font">Location Checker</div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20"></div>
+<br/><br/>
+
+<div class="container logout-width">
+    <form method="post" action="" class="form-signin" autocomplete="off">
+            {% csrf_token %}
+            <div class="col-md-12 col-sm-12 col-xs-12 header pad-top-bottom-20 title-font">
+            </div>
+            <div class="divider-header pad-top-bottom-20">Home Page</div>
+            <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20">
+
+<!--                 <div class="col-md-2 col-sm-2 col-xs-12 pad-top-bottom-20">-->
+
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20">
+
+                <a href="/user/login/" class="btn-register">Check IP</a>
+                </div>
+
+
+            </div>
+    </form>
+</div>
+</body>
+</html>

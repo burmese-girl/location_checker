@@ -1,0 +1,124 @@
+
+{% load static%}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}"><link rel="stylesheet" type="text/css" media="screen and (max-device-width: 480px)" href="{% static 'login/css/mobile.css' %}">
+     <link rel="stylesheet" type="text/css" media="screen and (min-device-width: 480px)" href="{% static 'login/css/main_menu.css' %}">
+    <title style="padding-left: 10px;">Burmese Zone</title>
+
+</head>
+<body class="login-bg" >
+<div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10" style="background-color: #9900cc;">
+<img class="img-login" src="/static/login/images/company.png"></img>
+<div class="company-font">Edit Profile</div>
+</div>
+
+<div class="container">
+    <form method="post" action="" class="form-profile-update" autocomplete="off">
+            {% csrf_token %}
+            <div class="col-md-12 col-sm-12 col-xs-12 header pad-top-bottom-20 title-font">
+
+            </div>
+            <div class="divider-header">
+<!--                <div class="col-md-3 col-sm-12 col-xs-12"><img src="{{ form.img}}"/></div>-->
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+
+                     <div class="col-md-2 col-sm-4 col-xs-12">
+                        <!--{{ form.name.label_tag }}-->
+                          <img class="img-login" src="/static/login/images/upload/profile/python.jpg"/>
+                     </div>
+                      <div class="col-md-4 col-sm-8 col-xs-12">
+
+                         {{ form.name }}
+                     </div>
+                </div>
+
+                 <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+
+                     <div class="col-md-2 col-sm-4 col-xs-12">
+                        {{ form.country_code.label_tag }}
+                     </div>
+                      <div class="col-md-4 col-sm-8 col-xs-12">
+                         {{ form.country_code }}
+                     </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+                  <div class="col-md-2 col-sm-4 col-xs-12">
+                    {{ form.phone_num.label_tag }}
+                 </div>
+
+                  <div class="col-md-4 col-sm-8 col-xs-12">
+                     {{ form.phone_num }}
+                 </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                        {{ form.dob.label_tag }}
+                     </div>
+
+                      <div class="col-md-4 col-sm-8 col-xs-12">
+                         {{ form.dob }}
+                     </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                        {{ form.nationality.label_tag }}
+                     </div>
+
+                      <div class="col-md-4 col-sm-8 col-xs-12">
+                         {{ form.nationality }}
+                     </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                        {{ form.residential_country.label_tag }}
+                     </div>
+
+                      <div class="col-md-4 col-sm-8 col-xs-12">
+                         {{ form.residential_country }}
+                     </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                        {{ form.gender.label_tag }}
+                     </div>
+
+                      <div class="col-md-4 col-sm-8 col-xs-12">
+                         {{ form.gender }}
+                     </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+                    <div class="col-md-2 col-sm-4 col-xs-12">
+                        {{ form.language.label_tag }}
+                     </div>
+
+                      <div class="col-md-4 col-sm-8 col-xs-12">
+                         {{ form.language }}
+                     </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20"></div>
+            <div class="col-md-12 col-sm-12 col-xs-12 ">
+
+            <div class="col-md-2 col-sm-6 col-xs-12">
+
+                <input class="btn-login" name="btn-save" type="submit" value="Save">
+            </div>
+            </div>
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+{% load static%}
+{% load bootstrap %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'login/css/bootstrap.css.map' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'login/css/main_menu.css' %}">
+        <link rel="stylesheet" type="text/css" media="screen and (max-device-width:480px)"
+              href="{% static 'login/css/mobile.css' %}">
+        <title style="padding-left: 10px;">{% trans "IP List By Login User" %}</title>
+    </head>
+    <body class="product-bg" >
+        <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bbottom-10 main-header" style="margin-bottom: 15px;">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <img class="img-login" src="{% static 'login/images/company.png' %}"></img>
+                <div class="company-font">{% trans "IP List By Login User" %}</div>
+            </div>
+        </div>
+
+        <form method="post" action="" class="form-product" autocomplete="off">  
+
+                {% csrf_token %}
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="container container product-width mag-top-0 mag-top-20" >
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                 
+                </div>
+                <!--    IP List-->
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                 
+                  
+                    {% if ip_list %}
+                    <ul>
+                        <div class="col-md-12 col-sm-12 col-xs-12">                            
+                            <div class="col-md-2 col-sm-2 col-xs-12"> 
+                                <h2>IP</h2>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12"> 
+                                <h2>Date </h2>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12"> 
+                                <h2>Continent</h2>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12"> 
+                                <h2>Country<h2>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12"> 
+                                <h2>Region</h2>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12"> 
+                                <h2>City<h2>
+                            </div>
+                        </div>
+                        {% for ip in ip_list %}
+                        <li class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20 product-list">
+                            
+                            <div class="col-md-2 col-sm-12 col-xs-12">                                
+                                <label> {{ip.ip}} </label>
+                            </div>     
+                            
+                             <div class="col-md-2 col-sm-12 col-xs-12">                                
+                                <label>{{ip.create_date}} </label>
+                            </div>  
+
+                             {% comment %} <div class="col-md-12 col-sm-12 col-xs-12">                                
+                                <label>{{ip.user_id}} </label>
+                            </div>   {% endcomment %}
+
+                            <div class="col-md-2 col-sm-12 col-xs-12 ">
+                                 <label>{{ip.continent}} </label>
+                               
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label>{{ip.country_code}}: {{ip.country}}</label>
+                            </div>
+
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label>{{ip.region_code}} : {{ip.region}}</label>
+                            </div>
+
+
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label>{{ip.city}} </label>
+                            </div>
+
+                            
+
+                            <br/>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <br/><br/>
+                    {% else %}
+                    <p>There are no ip for this user.</p>
+                    {% endif %}
+
+                </div>
+                <!--ended ip list-->
+                </div>
+                </div>
+
+            </form>
+
+    </body>
+    <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10 mainFooter">
+
+    <div class="col-md-5 col-sm-5 col-xs-12">
+        <div class="footer-font pad-top-bottom-10">Contact Us</div>
+        <div class="footer-font pad-top-bottom-10">+959772446147</div>
+        <div class="footer-font pad-top-bottom-10"><a href="https://www.linkedin.com/in/mayyi-aung-6a6185a3/">May Yi Aung</a></div>
+    </div>
+    <div class="col-md-6 col-sm-5 col-xs-12">
+        <div class="footer-font pad-top-bottom-10" style="font-size: 12px;font-family: serif;">
+            Developed By May Yi Aung</div>
+        <img src="{% static 'login/images/foot.jpg' %}" style="width: 80px;
+                height: 60px;
+                border-radius: 10px;
+                text-align: right;
+                margin-left: 65px;box-shadow: rgb(202, 204, 216) 0px 1px 10px 2px;">
+    </div>
+    <div class="col-md-1 col-sm-2 col-xs-12">
+        <div class="footer-font pad-top-bottom-10">About Us</div>
+        <div class="footer-font pad-top-bottom-10">News</div>
+        <div class="footer-font pad-top-bottom-10">Career</div>
+    </div>
+</div>
+</html>

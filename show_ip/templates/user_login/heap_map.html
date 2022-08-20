@@ -1,0 +1,114 @@
+{% load static%} {% load bootstrap %}
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<head> 
+  <script src="https://d3js.org/d3.v4.js"></script> <!-- d3.js -->
+  <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}" />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'login/css/main_menu.css' %}"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen and (max-device-width: 480px)"
+    href="{% static 'login/css/mobile.css' %}"
+  />
+  <title>Location Checker{% block title %}{% endblock %}</title>
+
+  <link rel="shortcut icon" href="/static/login/images/favico.ico" />
+</head>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <h2>Overall Heap Map depend on Users Searched Histroy</h2>
+</div>
+<div id="data_show" style="padding-left: 100px"></div>
+
+<script>
+
+  var margin = { top: 30, right: 100, bottom: 30, left: 120 },
+    width = 1000 - margin.left - margin.right,
+    height = 880 - margin.top - margin.bottom;
+
+  var svg = d3
+    .select("#data_show")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+  var myGroups = {{label_country | safe}}
+  var myVars = {{label_region | safe}}
+  console.log({{label_region | safe}} )
+
+  var x = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+  var y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
+  svg.append("g").call(d3.axisLeft(y));
+
+  var myColor = d3.scaleLinear().range(["white", "#ff2500"]).domain([1, 100]);
+
+  //Read the data from csv file located under static folder
+  d3.csv(
+    "/static/data-heap.csv",
+    function (data) {
+      svg
+        .selectAll()
+        .data(data, function (d) {
+          return d.country + ":" + d.region;
+        })
+        .enter()
+        .append("rect")
+        .attr("x", function (d) {
+          return x(d.country);
+        })
+        .attr("y", function (d) {
+          return y(d.region);
+        })
+        .attr("width", x.bandwidth())
+        .attr("height", y.bandwidth())
+        .style("fill", function (d) {
+          return myColor(d.value);
+        });
+    }
+  );
+</script>
+
+<div
+  class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10"
+  style="
+    background-color: ghostwhite;
+    margin-top: 40px;
+    position: relative;
+    z-index: 101;
+  "
+>
+  <div class="col-md-2 col-sm-2 col-xs-12">
+    <div class="footer-font pad-top-bottom-10">Contact Us</div>
+    <div class="footer-font pad-top-bottom-10">+95 9772446147</div>
+    <div class="footer-font pad-top-bottom-10">
+      <a href="https://www.linkedin.com/in/mayyi-aung-6a6185a3/">May Yi Aung</a>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-12"></div>
+  <div class="col-md-4 col-sm-4 col-xs-12">
+    <div
+      class="footer-font pad-top-bottom-10"
+      style="font-size: y; font-family: serif"
+    >
+      Developed By May Yi Aung
+    </div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-12"></div>
+  <div class="col-md-1 col-sm-1 col-xs-12">
+    <div class="footer-font pad-top-bottom-10">About Us</div>
+    <div class="footer-font pad-top-bottom-10">News</div>
+    <div class="footer-font pad-top-bottom-10">Career</div>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+
+{% load static%}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/main_menu.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width:480px)" href="{% static 'login/css/mobile.css' %}">
+    <title style="padding-left: 10px;">Location Checker</title>
+     <link rel="shortcut icon" href="/static/login/images/favico.ico" />
+    <!--    for datepicker -->
+    <link rel="stylesheet" href="/static/login/css/overcast/jquery-ui.css">
+    <script src="/static/login/js/jquery-1.11.2.min.js"></script>
+    <script src="/static/login/js/jquery-ui.min.js"></script>
+    <script>
+    $(function() {
+        $('.datepicker').datepicker({
+            shortYearCutoff: 1,
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd',
+            maxDate: new Date(),
+            yearRange: "1900:"
+        });
+      });
+    </script>
+    <!-- ended datepicker-->
+
+</head>
+<body class="login-bg">
+<div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10" style="background-color: #9900cc;">
+<img class="img-login" src="/static/login/images/company.png"></img>
+<div class="company-font">Location Checker</div>
+</div>
+
+<!--<div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20"></div>-->
+<br/><br/>
+<div class="container reg-width">
+    <form method="post" action="" class="form-register" autocomplete="off">
+            {% csrf_token %}
+            <div class="divider-header">Create an account ? </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20">
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="controls">
+                            {{ form.first_name }}
+                        </div>
+                        <span class="validation">{{ form.first_name.errors|striptags }}</span>
+                     </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="controls">
+                            {{ form.last_name }}
+                        </div>
+                        <span class="validation">{{ form.last_name.errors|striptags }}</span>
+                    </div>
+
+
+                 <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="controls">
+                    {{ form.email }}
+                    </div>
+                    <span class="validation">{{ form.email.errors|striptags }}</span>
+
+                 </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="controls">
+                        {{ form.password }}
+                    </div>
+                    <span class="validation">{{ form.password.errors|striptags }}</span>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="controls">
+                    {{ form.confirm_password }}
+                </div>
+                <span class="validation">{{ form.confirm_password.errors|striptags }}</span>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="controls">
+                        {{ form.dob }}
+                    </div>
+                    <span class="validation">{{ form.dob.errors|striptags }}</span>
+                 </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        {% comment %} <label  style="font-weight: normal;color: gray;width:100%;text-align: center;">Gender ? </label><br/> {% endcomment %}
+                        {{ form.gender }}
+                    </div>
+                    <span class="validation">{{ form.gender.errors|striptags }}</span>
+                 </div>
+
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <div  class="col-md-12 col-sm-12 col-xs-12">
+
+                    <input type="submit" VALUE="Sign Up" class="btn-login" ></input>
+                    </div>
+
+                     <div  class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10">
+
+                        <a class="" href="/user/login">Back Login ?</a>
+
+<!--                    <input type="button" VALUE="Create New Account" class="btn-register" />-->
+
+                    </div>
+
+                </div>
+    </form>
+</div>
+</body>
+
+
+</html>

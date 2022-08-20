@@ -1,0 +1,67 @@
+{% load i18n %} {% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'login/css/main_menu.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen and (max-device-width:480px)"
+      href="{% static 'login/css/mobile.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <title>Location Checker{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" href="/static/login/images/favico.ico" />
+
+    {% block head %}{% endblock %} {% block content %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <h2> Pie Chart depend on Users Searched Histroy</h2>
+    </div>
+    <div id="container" style="width: 75%">
+      <canvas id="pie-chart"></canvas>
+    </div>
+
+    <script>
+
+      var config = {
+        type: 'pie',
+        data: {
+          datasets: [{
+            data: {{ data|safe }},
+            backgroundColor: [
+              '#00daff', '#ff004c', '#8ce99a', '#be4bdb', '#4c6ef5', '#FE4EDA', '#FFFF66'
+            ],
+            label: 'Most Search Country'
+          }],
+          labels: {{ labels|safe }}
+        },
+        options: {
+          responsive: true
+        }
+      };
+
+      window.onload = function() {
+        var ctx = document.getElementById('pie-chart').getContext('2d');
+        window.myPie = new Chart(ctx, config);
+      };
+    </script>
+
+    {% endblock %}
+  </head>
+  <body>
+    {% block script %}{% endblock %}
+    <div class="col-md-12 col-sm-12 col-xs-12"></div>
+  </body>
+</html>

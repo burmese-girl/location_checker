@@ -1,0 +1,72 @@
+{% comment %} <form method="POST" action="/search">
+{% csrf_token %}
+<input type="text" name="textfield">
+
+<button type="submit">Upload text</button>
+</form> {% endcomment %}
+
+{% load static%}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/main_menu.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 480px)" href="{% static 'login/css/mobile.css' %}">
+    
+    <title style="padding-left: 10px;">Location Checker</title>
+
+</head>
+<body class="login-bg" >
+<div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-10" style="background-color:op;">
+    <img class="img-login" src="/static/login/images/company.png"></img>
+    <div class="company-font">Location Checker</div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20"></div>
+<br/><br/>
+<div class="container">
+    <form method="post" action="" class="form-search" autocomplete="off">
+            {% csrf_token %}
+            <div class="col-md-12 col-sm-4 col-xs-12">
+                <div class="col-md-10 col-sm-4 col-xs-12">
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-12">
+                    <a href="/user/profile/" class="btn-register">Profile</a>
+                </div>
+            </div>
+             <div class="divider-header">Search</div>           
+            <div class="divider-header">
+                 
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20">
+
+                
+                <div class="col-md-10 col-sm-12 col-xs-12">                    
+                    {{ form.ip_address }}                    
+                    <span class="validation">{{ form.ip_address.errors|striptags }}</span>
+                 </div>
+
+                   <div class="col-md-2 col-sm-12 col-xs-12 pad-top-bottom-0">                   
+                    <input type="submit" VALUE="Search" class="btn-search" ></input> 
+                </div>
+
+            </div>            
+
+            <div class="col-md-12 col-sm-12 col-xs-12 pad-top-bottom-20">
+
+               
+
+            </div>
+
+                
+
+
+
+    </form>
+</div>
+</body>
+
+
+</html>
